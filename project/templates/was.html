@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Information Security app</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+  <body id="page-top">
+
+    {% extends "index.html" %}
+    {% block pagecontent %}
+
+     <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Web Application Scanner</h1>
+
+          </div>
+
+
+
+                  <div class="col-xl-12 col-md-12 mb-12">
+                                 <p> Scan you website for vulnerabilities</p>
+
+
+    <form class="form-horizontal md-form mr-auto mb" action="/was" method="POST">
+         <div class="input-group">
+        <input class="form-control mr-sm-2" type="text" placeholder="Enter URL"  name="url">
+
+        <div class="input-group-append" >
+       <button class="btn btn-primary btn-rounded" type="submit" onclick="$('#loading').show();"
+           value="Get" data-toggle="modal" data-target="#exampleModalCenter">Scan</button>
+                        </div>
+
+             <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Enter your email:</label>
+            <input type="text" class="form-control" id="recipient-name" name="recipient_email">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" value="Get">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+         </div>
+        </form>
+         </div>
+
+<!---
+              <button class="btn btn-primary btn-rounded ">
+            <a href="#"><i class="fas fa-download fa-sm text-white-50"></i></a>  Generate Report</button>
+            -->
+
+      <div class="row">
+
+          <div id="loading" style="display:none;"><img src="/static/img/loading.gif" alt="" />
+              This may take a while. Please <b><em>DO NOT</em></b> close page until scan finishes. A scan report will be sent to your email ones the scan is complete.
+                </div>
+      </div>
+
+
+<!--
+ //   var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+ //   socket.on( 'connect', function() {
+    socket.emit('result' , {
+    data: ' Connection made'
+    })
+    var form = $( 'form').on ('submit', function(e) {
+    e.preventDefault()
+    let url = $('input.domain').val()
+
+    socket.emit('result', {
+    url : url
+    })
+    $( 'input.url' ).val('').focus()
+    })
+    })
+    socket.on( 'result', function( url ) {
+        console.log( url ) {
+
+ </> -->
+
+
+  <div class="row">
+
+        {% block result %}
+            {% endblock %}
+
+  </div>
+
+  </body>
+
+ {% endblock %}
+</html>

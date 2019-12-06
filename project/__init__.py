@@ -1,17 +1,31 @@
 # init.py
 
 from flask import Flask
+from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager 
+from flask_login import LoginManager
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
+
 
 def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+
+    mail_settings = {
+        "MAIL_SERVER": 'smtp.gmail.com',
+        "MAIL_PORT": 465,
+        "MAIL_USE_TLS": False,
+        "MAIL_USE_SSL": True,
+        "MAIL_USERNAME": 'bess.testin@gmail.com',
+        "MAIL_PASSWORD": 'Bess.testin123'
+    }
+    app.config.update(mail_settings)
+
+    Mail(app)
 
     db.init_app(app)
 
